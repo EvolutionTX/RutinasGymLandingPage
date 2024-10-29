@@ -6,8 +6,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9999;
 }
@@ -15,10 +15,11 @@
 .quiz-content {
     background-color: #fff;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 12px; /* Borde redondeado general */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     width: 90%;
+    margin: 10px; /* Espacio para evitar que el contenido toque los bordes */
 }
 
 h3 {
@@ -43,14 +44,10 @@ select {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px; /* Borde redondeado para el campo de selección */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-}
-
-select option {
-    padding: 5px;
 }
 
 /* Estilo personalizado para el botón de enviar */
@@ -59,13 +56,11 @@ select option {
     color: white;
     padding: 12px 24px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px; /* Borde redondeado para el botón de envío */
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* Estilo para el botón de cierre */
@@ -74,27 +69,41 @@ select option {
     color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px; /* Borde redondeado para el botón de cierre */
     cursor: pointer;
-    float: right;
     margin-top: 10px;
     transition: background-color 0.3s ease;
-}
-
-.close-modal:hover {
-    background-color: #db5337;
+    width: 100%;
 }
 
 /* Responsividad */
 @media (max-width: 600px) {
     .quiz-content {
         max-width: 100%;
-        width: 100%;
+        padding: 20px;
+        border-radius: 6px; /* Borde redondeado menor en dispositivos móviles */
+        margin: 5px; /* Reducir margen para pantallas pequeñas */
+    }
+
+    h3 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    label, select, .submit-button, .close-modal {
+        font-size: 14px;
+    }
+
+    .question {
+        margin-bottom: 15px;
     }
 
     .close-modal {
-        float: none;
         margin-top: 15px;
         margin-bottom: 10px;
+    }
+    
+    select, .submit-button, .close-modal {
+        border-radius: 6px; /* Ajuste de borde redondeado para elementos en móviles */
     }
 }
