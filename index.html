@@ -81,59 +81,62 @@
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
-    
+
     <!-- ***** Cuestionario Flotante ***** -->
-    <div class="quiz-modal" id="quizModal">
+    <div class="quiz-modal" id="quizModal" style="display: none;">
         <div class="quiz-content">
-            <h3>Encuentra la mejor rutina para ti</h3>
+            <h3>CUESTIONARIO PARA OBTENCIÓN DE PROGRAMA DE ENTRENAMIENTO</h3>
             <form id="quizForm">
                 <div class="question">
-                    <label>1. ¿Cuál es tu objetivo principal?</label><br>
-                    <select name="goal" required>
+                    <label>1. ¿Selecciona tu género?</label><br>
+                    <select name="physicalGender" required>
                         <option value="">Seleccione...</option>
-                        <option value="pérdida de peso">Pérdida de peso</option>
-                        <option value="ganancia muscular">Ganancia muscular</option>
-                        <option value="mejorar resistencia">Mejorar resistencia</option>
-                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="male">Masculino</option>
+                        <option value="female">Femenino</option>
+                        <option value="other">Otro</option>
                     </select>
                 </div>
                 <div class="question">
-                    <label>2. ¿Cuántos días a la semana puedes entrenar?</label><br>
-                    <select name="days" required>
+                    <label>2. ¿Cómo consideras tu condición física actual?</label><br>
+                    <select name="physicalCondition" required>
                         <option value="">Seleccione...</option>
-                        <option value="1-2">1-2 días</option>
-                        <option value="3-4">3-4 días</option>
-                        <option value="5-6">5-6 días</option>
-                        <option value="diariamente">Diariamente</option>
+                        <option value="poca">Poca (Actualmente no hago ejercicio)</option>
+                        <option value="regular">Regular (Realizo poco ejercicio o de manera irregular)</option>
+                        <option value="buena">Buena (Hago ejercicio de manera regular)</option>
                     </select>
                 </div>
                 <div class="question">
-                    <label>3. ¿Tienes alguna lesión o condición médica?</label><br>
-                    <select name="injury" required>
+                    <label>3. ¿Cuál es tu objetivo principal de entrenamiento?</label><br>
+                    <select name="trainingGoal" required>
                         <option value="">Seleccione...</option>
+                        <option value="perder peso">Perder peso</option>
+                        <option value="aumentar masa muscular">Aumentar tu masa muscular</option>
+                        <option value="acondicionamiento físico y salud">Acondicionamiento físico y salud</option>
+                    </select>
+                </div>
+                <div class="question">
+                    <label>4. ¿Cómo definirías tu tipo de cuerpo?</label><br>
+                    <select name="bodyType" required>
+                        <option value="">Seleccione...</option>
+                        <option value="ectomorfo">Ectomorfo (Complexión delgada, esqueleto fino, difícil ganar músculo o
+                            grasa)</option>
+                        <option value="mesomorfo">Mesomorfo (Adaptación rápida, facilidad para ganar músculo sin
+                            acumular grasa)</option>
+                        <option value="endomorfo">Endomorfo (Complexión robusta, facilidad para ganar músculo y grasa)
+                        </option>
+                    </select>
+                </div>
+                <div class="question">
+                    <label>5. ¿Tienes algún padecimiento o antecedente médico importante?</label><br>
+                    <select name="medicalCondition" id="medicalCondition" required>
+                        <option value="">Seleccione...</option>
+                        <option value="si">Sí</option>
                         <option value="no">No</option>
-                        <option value="lesión">Lesión</option>
-                        <option value="condición médica">Condición médica</option>
                     </select>
                 </div>
-                <div class="question">
-                    <label>4. ¿Qué tipo de entrenamiento prefieres?</label><br>
-                    <select name="trainingType" required>
-                        <option value="">Seleccione...</option>
-                        <option value="cardio">Cardio</option>
-                        <option value="pesas">Pesas</option>
-                        <option value="yoga">Yoga</option>
-                        <option value="entrenamiento funcional">Entrenamiento funcional</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>5. ¿Tienes experiencia previa en el gimnasio?</label><br>
-                    <select name="experience" required>
-                        <option value="">Seleccione...</option>
-                        <option value="principiante">Principiante</option>
-                        <option value="intermedio">Intermedio</option>
-                        <option value="avanzado">Avanzado</option>
-                    </select>
+                <div class="question" id="conditionDetails" style="display: none;">
+                    <label>Por favor, especifica tu padecimiento o lesión:</label><br>
+                    <input type="text" name="conditionDetails" placeholder="Describe tu padecimiento o lesión">
                 </div>
                 <button type="submit" class="submit-button">Enviar</button>
             </form>
@@ -528,8 +531,8 @@
                 <div class="col-lg-12">
                     <p>Copyright &copy; 2024 Estudio de Entrenamiento
 
-                        - Diseñado por <a rel="nofollow" href="https://www.linkedin.com/in/erick-bruno-5081a0281/" target="_blank" class="tm-text-link"
-                            target="_parent">CapitanNemo</a></p>
+                        - Diseñado por <a rel="nofollow" href="https://www.linkedin.com/in/erick-bruno-5081a0281/"
+                            target="_blank" class="tm-text-link" target="_parent">CapitanNemo</a></p>
 
                 </div>
             </div>
@@ -538,6 +541,7 @@
 
     <!-- jQuery -->
     <script src="assets/js/cuestionary.js"></script>
+    <script src="assets/js/FeaturesItemStart.js"></script>
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

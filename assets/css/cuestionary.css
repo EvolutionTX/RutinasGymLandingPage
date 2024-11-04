@@ -6,31 +6,34 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* Ocupa todo el ancho de la pantalla */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9999;
+    overflow: auto; /* Permitir scroll en caso de contenido desbordado */
 }
 
 .quiz-content {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 12px; /* Borde redondeado general */
+    padding: 20px; /* Reducido para evitar desbordamiento */
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    max-width: 500px; /* Ajustado para que se vea bien en pantallas pequeñas */
     width: 90%;
-    margin: 10px; /* Espacio para evitar que el contenido toque los bordes */
+    max-height: 90vh; /* Limitar la altura máxima para evitar recortes */
+    overflow-y: auto; /* Scroll interno si es necesario */
+    margin: 10px;
 }
 
 h3 {
     color: #333;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 /* Estilos para las preguntas y selecciones */
 .question {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 label {
@@ -39,71 +42,65 @@ label {
     margin-bottom: 5px;
 }
 
-select {
+select,
+input[type="text"] {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 8px; /* Borde redondeado para el campo de selección */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    border-radius: 8px;
+    margin-top: 5px;
 }
 
-/* Estilo personalizado para el botón de enviar */
+/* Botones */
+.submit-button,
+.close-modal {
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
 .submit-button {
     background-color: #007bff;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px; /* Borde redondeado para el botón de envío */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 10px;
 }
 
-/* Estilo para el botón de cierre */
 .close-modal {
     background-color: #ff6347;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px; /* Borde redondeado para el botón de cierre */
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    width: 100%;
+}
+
+/* Efectos de hover */
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.close-modal:hover {
+    background-color: #e53e3e;
 }
 
 /* Responsividad */
 @media (max-width: 600px) {
     .quiz-content {
         max-width: 100%;
-        padding: 20px;
-        border-radius: 6px; /* Borde redondeado menor en dispositivos móviles */
-        margin: 5px; /* Reducir margen para pantallas pequeñas */
+        padding: 15px;
+        border-radius: 6px;
+        margin: 5px;
     }
 
     h3 {
         font-size: 1.2em;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
-    label, select, .submit-button, .close-modal {
+    label, select, input[type="text"], .submit-button, .close-modal {
         font-size: 14px;
     }
 
     .question {
-        margin-bottom: 15px;
-    }
-
-    .close-modal {
-        margin-top: 15px;
         margin-bottom: 10px;
-    }
-    
-    select, .submit-button, .close-modal {
-        border-radius: 6px; /* Ajuste de borde redondeado para elementos en móviles */
     }
 }

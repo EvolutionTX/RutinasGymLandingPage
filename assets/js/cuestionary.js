@@ -1,5 +1,6 @@
 // Mostrar el modal cuando se hace clic en el botón "Iniciar Cuestionario"
-document.querySelector('.main-button a').addEventListener('click', function() {
+document.querySelector('.main-button a').addEventListener('click', function(event) {
+    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
     document.getElementById('quizModal').style.display = 'flex';
 });
 
@@ -8,24 +9,62 @@ document.getElementById('closeModal').addEventListener('click', function() {
     document.getElementById('quizModal').style.display = 'none';
 });
 
+// Mostrar/ocultar el campo de texto para detalles de la condición médica
+document.getElementById('medicalCondition').addEventListener('change', function() {
+    const conditionDetails = document.getElementById('conditionDetails');
+    if (this.value === 'si') {
+        conditionDetails.style.display = 'block';
+    } else {
+        conditionDetails.style.display = 'none';
+    }
+});
+
 // Manejar el envío del cuestionario
 document.getElementById('quizForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita el envío del formulario
 
-    // Verificar si se seleccionó "lesión"
-    const injuryValue = document.querySelector('select[name="injury"]').value;
-    if (injuryValue === 'lesión') {
-        alert('Por favor, consulta a un fisioterapeuta o médico adecuado para asegurarte de que puedes realizar ejercicios físicos. Aun hay tiempo no te apresures tomate un respiro');
-    } else {
-        alert('Cuestionario enviado con éxito!');
+    // Obtener valores seleccionados
+    const gender = document.querySelector('select[name="physicalGender"]').value;
+    const physicalCondition = document.querySelector('select[name="physicalCondition"]').value;
+    const trainingGoal = document.querySelector('select[name="trainingGoal"]').value;
+    const medicalCondition = document.querySelector('select[name="medicalCondition"]').value;
+    const conditionDetails = document.querySelector('input[name="conditionDetails"]').value;
 
-        // Iniciar la descarga del PDF (reemplaza 'path/to/your/file.pdf' con la ruta correcta)
+    // Verificar si se seleccionó "Sí" para condición médica
+    if (medicalCondition === 'si' && !conditionDetails) {
+        alert('Por favor, especifica tu padecimiento o lesión.');
+        return;
+    }
+
+    // Determinar la ruta del PDF basado en las respuestas
+    let pdfPath = '';
+    
+    if (gender === 'male') {
+        if (trainingGoal === 'Aumentar tu masa muscular' || physicalCondition === 'poca' ) {
+            pdfPath = 'assets/pdf/men/RUTINAS EVO HOMBRES AUMENTO MASA MUSCULAR.pdf';
+        } else {
+            pdfPath = 'assets/pdf/men/PROGRAMAS EVO HOMBRE ENDO PP.pdf';
+        }
+    } else if (gender === 'female') {
+        if (trainingGoal === 'Aumentar tu masa muscular' || physicalCondition === 'poca') {
+            pdfPath = 'assets/pdf/women/PROGRAMAS EVO MUJERES AUMENTO MASA MUSCULAR.pdf';
+        } else {
+            pdfPath = 'assets/pdf/women/PROGRAMAS EVO MUJERES PERDIDA DE PESO.pdf';
+        }
+    }
+
+    if (pdfPath) {
+        alert('Cuestionario enviado con éxito! Iniciando descarga de tu rutina personalizada.');
+
+        // Iniciar la descarga del PDF
         const link = document.createElement('a');
-        link.href = 'assets/pdf/pdf-rutina-de-entrenamiento-para-principiantes.pdf'; //! URL del PDF a descargar
-        link.download = 'rutina para principiantes.pdf'; //? Nombre del archivo al descargar
+        link.href = pdfPath;
+        link.download = 'rutina_entrenamiento_personalizada.pdf';
         document.body.appendChild(link);
-        link.click(); // Simular clic para iniciar descarga
+        link.click();
         document.body.removeChild(link); // Limpiar el DOM
+    } else {
+        alert('Hubo un error al generar tu rutina. Por favor, revisa las respuestas e inténtalo de nuevo.');
     }
 
     // Cerrar el modal después del envío
