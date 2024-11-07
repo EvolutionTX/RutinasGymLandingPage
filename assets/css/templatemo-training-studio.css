@@ -191,7 +191,7 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #f9735b;
+  background-color: #60be9c; /*f9735b*/
 }
 
 
@@ -324,7 +324,7 @@ header
 }
 
 .header-area .main-nav .nav li:last-child a:hover {
-  background-color: #3eb489;
+  background-color: #4dbb93;
   opacity: 1;
 }
 
